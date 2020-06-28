@@ -1,7 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
+
+// SERVICES
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
+import { BooksService } from './services/books.service';
+
+// COMPONENTS
 import { AppComponent } from './app.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
@@ -18,13 +24,10 @@ import { HeaderComponent } from './header/header.component';
     BookListComponent,
     SingleBookComponent,
     BookFormComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [AuthService, AuthGuardService, BooksService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
