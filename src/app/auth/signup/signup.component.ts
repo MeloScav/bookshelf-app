@@ -25,6 +25,7 @@ export class SignupComponent implements OnInit {
     this.initForm();
   }
 
+  // Form initialization
   initForm() {
     // Password: min 6 characters
     this.signUpForm = this.formBuilder.group({
@@ -34,5 +35,23 @@ export class SignupComponent implements OnInit {
         [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)],
       ],
     });
+  }
+
+  // Submit form
+  onSubmit() {
+    // Recovery of values
+    const email = this.signUpForm.get('email').value;
+    const password = this.signUpForm.get('password').value;
+    // Create new user
+    this.authService.createNewUser(email, password).then(
+      () => {
+        //  If successful: refer to books
+        this.router.navigate(['/books']);
+      },
+      (error) => {
+        // If error: display the error message
+        this.errorMessage = error;
+      }
+    );
   }
 }
