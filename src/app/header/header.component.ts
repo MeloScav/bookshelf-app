@@ -17,11 +17,16 @@ export class HeaderComponent implements OnInit {
     // Activated when authentification status changes
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        // If user is detected
+        // If user is detected => connected
         this.isAuth = true;
       } else {
         this.isAuth = false;
       }
     });
+  }
+
+  // Sign out
+  onSignOut() {
+    this.authService.signOutUser();
   }
 }
