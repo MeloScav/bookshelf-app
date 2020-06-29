@@ -24,9 +24,21 @@ import { HeaderComponent } from './header/header.component';
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
   { path: 'auth/signin', component: SigninComponent },
-  { path: 'books', component: BookListComponent },
-  { path: 'books/new', component: BookFormComponent },
-  { path: 'books/view/:id', component: SingleBookComponent },
+  {
+    path: 'books',
+    canActivate: [AuthGuardService],
+    component: BookListComponent,
+  },
+  {
+    path: 'books/new',
+    canActivate: [AuthGuardService],
+    component: BookFormComponent,
+  },
+  {
+    path: 'books/view/:id',
+    canActivate: [AuthGuardService],
+    component: SingleBookComponent,
+  },
 ];
 
 @NgModule({
