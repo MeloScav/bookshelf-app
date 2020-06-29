@@ -39,6 +39,8 @@ const appRoutes: Routes = [
     canActivate: [AuthGuardService],
     component: SingleBookComponent,
   },
+  { path: '', redirectTo: 'books' },
+  { path: '**', redirectTo: 'books' },
 ];
 
 @NgModule({
