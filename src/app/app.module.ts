@@ -22,8 +22,8 @@ import { HeaderComponent } from './header/header.component';
 
 // Routing
 const appRoutes: Routes = [
-  { path: 'auth/sinup', component: SignupComponent },
-  { path: 'auth/sinin', component: SigninComponent },
+  { path: 'auth/signup', component: SignupComponent },
+  { path: 'auth/signin', component: SigninComponent },
   { path: 'books', component: BookListComponent },
   { path: 'books/new', component: BookFormComponent },
   { path: 'books/view/:id', component: SingleBookComponent },
