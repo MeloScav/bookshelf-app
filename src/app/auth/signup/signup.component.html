@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
     <h2>Créer un compte</h2>
-    <form [formGroupName]="signUpForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="email">Email</label>
         <input
@@ -14,7 +14,7 @@
       <div class="form-group">
         <label for="password">Mot de passe</label>
         <input
-          type="text"
+          type="password"
           id="password"
           class="form-control"
           formControlName="password"
