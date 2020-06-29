@@ -25,7 +25,7 @@ export class AuthService {
     });
   }
 
-  // SIGNIN
+  // SIGN IN
   signInUser(email: string, password: string) {
     return new Promise((resolve, reject) => {
       firebase
@@ -40,5 +40,10 @@ export class AuthService {
           }
         );
     });
+  }
+
+  // SIGN OUT
+  signOutUser() {
+    firebase.auth().signOut();
   }
 }
