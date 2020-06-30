@@ -25,4 +25,18 @@ export class BooksService {
     // set => save array to "/books", replace if exists
     firebase.database().ref('/books').set(this.books);
   }
+
+  // GET BOOKS
+  getBooks() {
+    // on => react to changes to the database
+    // on => observe "value"
+    // val() => value of data returned by the server
+    firebase
+      .database()
+      .ref('/books')
+      .on('value', (data) => {
+        this.books = data.val() ? data.val() : [];
+        this.emitBooks();
+      });
+  }
 }
