@@ -39,4 +39,22 @@ export class BooksService {
         this.emitBooks();
       });
   }
+
+  // SINGLE BOOK
+  getSingleBook(id: number) {
+    return new Promise((resolve, reject) => {
+      firebase
+        .database()
+        .ref('/books/' + id)
+        .once('value')
+        .then(
+          (data) => {
+            resolve(data.val());
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  }
 }
