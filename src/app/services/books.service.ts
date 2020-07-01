@@ -64,4 +64,20 @@ export class BooksService {
     this.saveBooks();
     this.emitBooks();
   }
+
+  // REMOVE BOOK
+  removeBook(book: Book) {
+    // Retrieve the index
+    const bookIndexToRemove = this.books.findIndex((element) => {
+      if (element === book) {
+        return true;
+      }
+    });
+    // Remove from this index
+    this.books.splice(bookIndexToRemove, 1);
+    // Save the array
+    this.saveBooks();
+    // Emit
+    this.emitBooks();
+  }
 }
