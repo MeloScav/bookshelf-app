@@ -26,4 +26,19 @@ export class BookListComponent implements OnInit {
     );
     this.booksService.emitBooks();
   }
+
+  // BUTTON NEW BOOK
+  onNewBook() {
+    this.router.navigate(['/books', 'new']);
+  }
+
+  // BUTTON DELET BOOK
+  onDeleteBook(book: Book) {
+    this.booksService.removeBook(book);
+  }
+
+  // BUTTON SEE BOOK
+  onViewBook(id: number) {
+    this.router.navigate(['/books', 'view', id]);
+  }
 }
