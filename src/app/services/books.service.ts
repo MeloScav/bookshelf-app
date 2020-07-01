@@ -57,4 +57,11 @@ export class BooksService {
         );
     });
   }
+
+  // NEW BOOK
+  createNewBook(newBook: Book) {
+    this.books.push(newBook);
+    this.saveBooks();
+    this.emitBooks();
+  }
 }
