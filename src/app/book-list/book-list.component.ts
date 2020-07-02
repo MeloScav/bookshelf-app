@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Book } from '../models/book.model';
 import { Subscription } from 'rxjs';
 import { BooksService } from '../services/books.service';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss'],
 })
-export class BookListComponent implements OnInit {
+export class BookListComponent implements OnInit, OnDestroy {
   // Local array
   books: Book[];
   // To subscribe to subject of books.service
@@ -40,5 +40,9 @@ export class BookListComponent implements OnInit {
   // BUTTON SEE BOOK
   onViewBook(id: number) {
     this.router.navigate(['/books', 'view', id]);
+  }
+
+  ngOnDestroy() {
+    this.booksSubscription.unsubscribe();
   }
 }
