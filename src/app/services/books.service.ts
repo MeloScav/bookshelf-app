@@ -80,4 +80,37 @@ export class BooksService {
     // Emit
     this.emitBooks();
   }
+
+  // UPLOAD FILE
+  uploadFile(file: File) {
+    return new Promise((resolve, reject) => {
+      const almostUniqueFileName = Date.now().toString();
+      // ref() only => reference to the root of the storage
+      // child() => create a child images folder
+      // put(file) => save file in folder
+      const upload = firebase
+        .storage()
+        .ref()
+        .child('images/' + almostUniqueFileName + file.name)
+        .put(file);
+      // React to each change of download status
+      upload.on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        // Follow the download
+        () => {
+          console.log('Chargement...');
+        },
+        // Error
+        (error) => {
+          console.log('Erreur de chargement: ' + error);
+          reject();
+        },
+        // Complete
+        () => {
+          // URL image in storage to save in database and display
+          resolve(upload.snapshot.downloadURL);
+        }
+      );
+    });
+  }
 }
