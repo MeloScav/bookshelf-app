@@ -67,6 +67,19 @@ export class BooksService {
 
   // REMOVE BOOK
   removeBook(book: Book) {
+    // Remove image
+    if (book.photo) {
+      // Reference to the file in the storage from the url
+      const storageRef = firebase.storage().refFromURL(book.photo);
+      storageRef
+        .delete()
+        .then(() => {
+          console.log('Photo supprimée');
+        })
+        .catch((error) => {
+          console.log('Fichier non trouvé : ' + error);
+        });
+    }
     // Retrieve the index
     const bookIndexToRemove = this.books.findIndex((element) => {
       if (element === book) {
