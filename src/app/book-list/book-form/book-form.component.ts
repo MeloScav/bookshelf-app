@@ -30,6 +30,7 @@ export class BookFormComponent implements OnInit {
     this.bookForm = this.formBuilder.group({
       title: ['', Validators.required],
       author: ['', Validators.required],
+      synopsis: '',
     });
   }
 
@@ -38,8 +39,10 @@ export class BookFormComponent implements OnInit {
     // Recover the form values
     const title = this.bookForm.get('title').value;
     const author = this.bookForm.get('author').value;
+    const synopsis = this.bookForm.get('synopsis').value;
     // New book and save
     const newBook = new Book(title, author);
+    newBook.synopsis = synopsis;
     // If file url exists
     if (this.fileUrl && this.fileUrl !== '') {
       newBook.photo = this.fileUrl;
