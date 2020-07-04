@@ -93,6 +93,7 @@ export class BooksService {
         .ref()
         .child('images/' + almostUniqueFileName + file.name)
         .put(file);
+
       // React to each change of download status
       upload.on(
         firebase.storage.TaskEvent.STATE_CHANGED,
@@ -108,7 +109,7 @@ export class BooksService {
         // Complete
         () => {
           // URL image in storage to save in database and display
-          resolve(upload.snapshot.downloadURL);
+          resolve(upload.snapshot.ref.getDownloadURL());
         }
       );
     });

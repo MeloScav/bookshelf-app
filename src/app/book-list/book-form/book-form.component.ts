@@ -40,12 +40,11 @@ export class BookFormComponent implements OnInit {
     const author = this.bookForm.get('author').value;
     // New book and save
     const newBook = new Book(title, author);
-    this.booksService.createNewBook(newBook);
-
     // If file url exists
     if (this.fileUrl && this.fileUrl !== '') {
       newBook.photo = this.fileUrl;
     }
+    this.booksService.createNewBook(newBook);
 
     // Return to list of books
     this.router.navigate(['/books']);
