@@ -1,4 +1,7 @@
 @import "./helpers/variables";
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
+@import "./global/global";
+
 @import "./components/header.component";
+@import "./components/signin.component";
