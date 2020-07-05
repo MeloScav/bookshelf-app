@@ -1,0 +1,19 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  .btn-card {
+    width: 18rem;
+  }
+  .card-body {
+    width: 100%;
+  }
+}
