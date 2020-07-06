@@ -6,7 +6,7 @@
 .title h2 {
   position: relative;
   text-align: center;
-  padding-bottom: 40px;
+  padding-bottom: calculateRem(40);
 }
 
 .title h2::before {
@@ -15,8 +15,8 @@
   display: block;
   bottom: 0;
   left: 50%;
-  width: 120px;
-  height: 5px;
+  width: calculateRem(120);
+  height: calculateRem(5);
   transform: translate(-50%, -25px);
   background-color: $secondary;
 }
