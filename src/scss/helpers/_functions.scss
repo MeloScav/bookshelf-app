@@ -1,0 +1,5 @@
+// To get rems based on px
+@function calculateRem($pxSize) {
+  $remSize: $pxSize/ 16;
+  @return #{$remSize}rem;
+}
